@@ -1,0 +1,55 @@
+const { argv } = require('process')
+const PORT = argv[2]
+const express = require('express')
+const path = require('path')
+const app = express()
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
+app.set("views", path.resolve(__dirname, "templates"));
+app.set('view engine', '.ejs')
+app.use('/css',express.static('css'))
+app.listen(PORT, () => {
+	console.log(`Web server started and running at http://localhost:${PORT}`)
+	process.stdout.write('Stop to shutdown the server: ')
+})
+
+
+let data = '';
+
+process.stdin.on('readable', () => {
+  let chunk;
+  while ((chunk = process.stdin.read()) !== null) {
+    data += chunk;
+  }
+
+  let command = data.trim();
+  if (command === 'stop') {
+    console.log('Shutting down server');
+    process.exit(0);
+  } else {
+    console.log('Invalid command. Please enter "stop" to shutdown the server.');
+  }
+
+  data = ''; // Reset the data variable after processing each command
+});
+
+process.stdin.on('end', () => {
+  process.stdout.resume();
+});
+
+process.stdin.on('error', (err) => {
+  console.error('Error reading input:', err);
+  process.exit(1);
+});
+
+app.get('/', (request, response) => {
+	response.render('index.ejs')
+})
+app.get('/persepolis', (request, response) => {
+	response.render('persepolis')
+})
+app.get('/spiderman', (request, response) => {
+	response.render('spiderman')
+})

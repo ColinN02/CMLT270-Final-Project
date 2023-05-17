@@ -1,0 +1,81 @@
+html {
+    background-color: lightgray;
+
+}
+
+h1 {
+    text-align: center;
+    font-size: 5rem;
+    text-shadow: silver .125em .125em .125em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    text-shadow: silver .125em .125em .125em;
+}
+
+img {
+    border: .75rem solid;
+    border-color: black;
+    border-style: double;
+    height: 50%;
+    width: 50%;
+    position: relative;
+    left: 25%;
+
+}
+
+#book {
+    height: 50%;
+    width: 50%;
+    position: relative;
+    left: 25%;
+
+}
+
+#spider {
+    height: 50%;
+    width: 50%;
+    position: relative;
+    left: 25%;
+}
+
+#footerlink {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 7.5rem;
+    color: black;
+}
+
+#intro {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5rem;
+    text-indent: 4rem;
+}
+
+.button-container {
+    position: absolute;
+    left:42.5%;
+    top:150%;
+  
+}
+.button-container button {
+    display: inline-block;
+    margin: 5px;
+}
+html{
+    border: .75rem solid;
+    border-color: silver;
+    border-style: ridge;
+    
+}
+#nextPage{
+    position: absolute;
+    left:47.5%;
+    top:150%;
+}
