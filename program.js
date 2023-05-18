@@ -53,3 +53,21 @@ app.get('/persepolis', (request, response) => {
 app.get('/spiderman', (request, response) => {
 	response.render('spiderman')
 })
+app.get('/introduction', (request, response) => {
+	response.render('introduction')
+})
+app.get('/babel', (request, response) => {
+	response.render('babel')
+})
+app.get('/mountainsMayDepart', (request, response) => {
+	response.render('mountainsMayDepart')
+})
+app.get('/whiteTiger', (request, response) => {
+	response.render('whiteTiger')
+})
+app.get('/compLiterature', (request, response) => {
+	response.render('compLiterature')
+})
+app.get('/outcome', (request, response) => {
+	response.render('outcome')
+})
