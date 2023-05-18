@@ -24,7 +24,6 @@ html {
   bottom: 8rem;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
 }
 
 button {
@@ -199,4 +198,11 @@ a:hover {
   border: .75rem solid;
   border-color: black;
   border-style: double;
+}
+#outcomePic img{
+  height:50%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
