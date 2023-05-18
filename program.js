@@ -3,16 +3,17 @@ const PORT = argv[2]
 const express = require('express')
 const path = require('path')
 const app = express()
+const sharp = require('sharp');
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static('public'));
 app.use('/images', express.static('images'));
 app.set("views", path.resolve(__dirname, "templates"));
 app.set('view engine', '.ejs')
-app.use('/css',express.static('css'))
+app.use('/css', express.static('css'))
 app.listen(PORT, () => {
-	console.log(`Web server started and running at http://localhost:${PORT}`)
-	process.stdout.write('Stop to shutdown the server: ')
+  console.log(`Web server started and running at http://localhost:${PORT}`)
+  process.stdout.write('Stop to shutdown the server: ')
 })
 
 
@@ -45,29 +46,40 @@ process.stdin.on('error', (err) => {
 });
 
 app.get('/', (request, response) => {
-	response.render('index.ejs')
+  response.render('index.ejs')
 })
 app.get('/persepolis', (request, response) => {
-	response.render('persepolis')
+  response.render('persepolis')
 })
 app.get('/spiderman', (request, response) => {
-	response.render('spiderman')
+  response.render('spiderman')
 })
 app.get('/introduction', (request, response) => {
-	response.render('introduction')
+  response.render('introduction')
 })
 app.get('/babel', (request, response) => {
-	response.render('babel')
+  response.render('babel')
 })
 app.get('/mountainsMayDepart', (request, response) => {
-	response.render('mountainsMayDepart')
+  response.render('mountainsMayDepart')
 })
 app.get('/whiteTiger', (request, response) => {
-	response.render('whiteTiger')
+  response.render('whiteTiger')
 })
 app.get('/compLiterature', (request, response) => {
-	response.render('compLiterature')
+  response.render('compLiterature')
 })
 app.get('/outcome', (request, response) => {
-	response.render('outcome')
+  response.render('outcome')
 })
+const images = ['part1.PNG', 'part2.PNG', 'part3.PNG', 'part4.PNG'];
+
+// Store the current index
+let currentIndex = 0;
+
+// Define the route for the next button click
+app.get('/next', (req, res) => {
+  // Increment the current index
+  currentIndex = (currentIndex + 1) % images.length;
+  res.sendStatus(200);
+});

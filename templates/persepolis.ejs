@@ -4,6 +4,19 @@
 </link>
 <script src="program.js"></script>
 <meta charset="UTF-8">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
 <title>Persepolis</title>
 <div id="banner">
     <a href="/"><img src="/images/banner.jpg">
@@ -43,8 +56,7 @@
         <img src="images/persepolisbook.jpg" alt="book">
     </div>
     <h2>
-        <a href="https://cdn.vanderbilt.edu/vu-wp0/wp-content/uploads/sites/164/2019/03/28042440/Reading-Active-Reading-Strategies-Close-Reading.pdf"
-            title="Goes to Close-Reading Techniques Page" target="_blank">Persepolis</a>
+        Persepolis
     </h2>
 
     <p>
@@ -76,34 +88,57 @@
         culture, as well as the challenges faced by immigrants and those living under repressive regimes.
     </p>
     <hr>
-    <h2>
-        Close-Reading
-    </h2>
+    <a href="https://cdn.vanderbilt.edu/vu-wp0/wp-content/uploads/sites/164/2019/03/28042440/Reading-Active-Reading-Strategies-Close-Reading.pdf"
+        title="Goes to Close-Reading Techniques Page" target="_blank">
+        <h2>
+            Close-Reading
+        </h2>
+    </a>
     <p>
+        In the graphic novel Persepolis by Marjane Satrapi, the main character goes through changes as she starts to
+        adopt Western culture. At the beginning, Marjane is shown happily dancing and pretending to play an electric
+        guitar with her tennis racket in her room. She has a new Iron Maiden poster on her wall, a gift from her
+        parents' trip to Turkey. This shows that Marjane is becoming interested in English customs and starting to like
+        heavy metal bands. In the next scene, Marjane poses like the famous English singer Kim Wilde, indicating her
+        growing fascination with Western music and its influence on her. In later scenes, Marjane carefully chooses her
+        clothes, wearing Nike shoes and a denim jacket while still wearing her veil loosely on her head, revealing her
+        hair. This shows that she is developing a sense of Western fashion and gradually moving away from her Iranian
+        heritage. Marjane wants to fit in with Western society, as shown by her fashion choices
+        and her interest in the music and fashion culture of Austria, where she currently lives. Through these
+        illustrations, Satrapi effectively shows how Marjane assimilates into a new culture while keeping parts of her
+        own identity.
+    </p>
+    <hr>
+    <div id="slideshow">
+        <script>
+            let currentIndex = 1; // Start with the first image
 
-        In Persepolis, the graphic novel by Marjane Satrapi, we can observe the transformation of the main character as
-        she embraces elements of Western culture. In the first panel, Marjane is depicted joyfully dancing and mimicking
-        playing an electric guitar with her tennis racket. This playful act takes place in her room adorned with a new
-        Iron Maiden poster, a gift from her parents during their trip to Turkey. It becomes evident that Marjane is
-        becoming intrigued by English customs and developing a liking for heavy metal bands.
+            function nextSlide() {
+                // Send a request to the server to move to the next slide
+                fetch('/next')
+                    .then(() => {
+                        currentIndex = (currentIndex % 4) + 1; // Cycle through 1 to 4
 
-        Continuing to the next panel, Marjane assumes a modeling pose reminiscent of Kim Wilde, a renowned English
-        singer. This gesture illustrates her growing fascination with the Western music scene and the influence it holds
-        over her. In subsequent panels, we witness Marjane carefully selecting her attire, donning her Nike shoes and
-        denim jacket while keeping her veil loosely draped on her head, revealing her hair. This deliberate choice
-        showcases her evolving fashion sense and how she is beginning to adopt Western fashion trends.
+                        // Update the image source with the new slide
+                        const img = document.getElementById('slide');
+                        img.src = `images/part${currentIndex}.PNG`;
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+        </script>
+        <h1>Slideshow</h1>
+        <img id="slide" src="images/part1.PNG" alt="Slide" />
+        <br />
+        <button onclick="nextSlide()">Next Slide</button>
 
-        Although Marjane still wears her veil, it is notable that she no longer covers her entire head, signaling a
-        gradual transition from her Iranian heritage to a more Western culture. She seeks to blend in with Western
-        society, evident in her fashion choices and her alignment with the music and fashion culture prevalent in
-        Austria, where she now resides.
+    </div>
 
-        Through these visual depictions, Satrapi effectively portrays Marjane's journey of cultural assimilation and her
-        desire to integrate into the Western world while retaining aspects of her identity.
     <div id="persepolisSmall2">
         <img src="/images/persepolisComic.PNG">
     </div>
+</body>
 
-    </p>
-
+</html>
 </body>
